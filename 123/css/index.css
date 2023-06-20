@@ -1,0 +1,238 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --index: calc(1vw + 1vh);
+    --transform: 1.5s cubic-bezier(0.05, 0.5, 0,1);
+    --window-width: calc(1vw);
+}
+
+
+@font-face {
+    font-family: kamerik-3d;
+    src: url(../fonts/kamerik205-heavy.woff2);
+    font-weight: 900;
+}
+@font-face {
+    font-family: merriweather-3d;
+    src: url(../fonts/merriweather-regular-italic.woff2);
+}
+
+header{
+    background-color: black;
+    color: white;
+    font-family: kamerik-3d;
+}
+
+.logo{
+    --logo-size: calc(var(--index) * 7.8);
+    width: calc(var(--index) * 7.8);
+    height: calc(var(--index) * 7.8);
+    position: absolute;
+    z-index: 1;
+    background-repeat: no-repeat;
+    top: calc(var(--index) * 2.8);
+    left: calc(50% - calc(var(--logo-size) / 2));
+}
+
+.layers{
+    perspective: 1000px;
+    overflow: hidden;
+}
+.layers__container{
+    height: 100vh;
+    min-height: 500px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transform: rotateX(var(--move-y)) rotateY(var(--move-x));
+    transition: transform var(--transform);
+}
+.layers__item{
+    position: absolute;
+    inset: -5vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layers-1{
+    transform: translateZ(-55px) scale(1.06);
+}
+.layers-2{
+    transform: translateZ(80px) scale(0.88);
+}
+.layers-3{
+    transform: translateZ(180px) scale(0.8);
+}
+.layers-4{
+    transform: translateZ(190px) scale(0.8);
+}
+.layers-5{
+    transform: translateZ(300px) scale(0.9);
+}
+.layers-6{
+    transform: translateZ(380px);
+}
+.main-text{
+    font-size: calc(var(--index)* 2.9);
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: calc(var(--index) *5.5)
+}
+.main-text span{
+    display: block;
+}
+
+.text__p{
+    text-transform: none;
+    font-family: merriweather-3d;
+    font-size: calc(var(--index)*0.8);
+
+}
+
+#NavBar{
+    box-sizing: content-box;
+    height:0;
+    border-bottom: 100px solid rgba(0,0,0,.4);
+    color: black;
+    margin-top: -50px;
+    width: 1000px;
+    padding-left: calc(var(--window-width)* 34.8);
+    transform: rotateX(180deg);
+
+}
+nav{
+    position: fixed;
+    top:0;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    z-index:1;
+    
+}
+nav a{
+    float: left;
+    color:white;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: calc(var(--index)*0.5);
+    transform: rotateX(180deg);
+    
+}
+nav a:hover{
+    background-color: rgb(23, 97, 14);
+    color: black;
+    border-radius: 5px;
+}
+
+body{
+    background: linear-gradient(rgb(84, 221, 84), rgb(29, 105, 9));
+}
+.about-art{
+    width: 80%;
+    margin-left:10%;
+    font-size: calc(var(--index)* 2);
+    text-align: center;
+    top: calc(var(--index) * 2.8);
+    letter-spacing: calc(vat(--index)*-0.07);
+
+
+}
+.gallery{
+    --gallery-margin: calc(var(--index) * 6);
+    background-color: rgba(0,24,2,0.3);
+    border-radius: 15px;
+    width:95%;
+    margin: var(--gallery-margin) 0 var(--gallery-margin) 2.5%;
+
+
+}
+
+.gallery__caption{
+    text-align: center;
+    font-family: merriweather-3d;
+    font-size: calc(var(--index)*2);
+    text-transform: uppercase;
+    padding-top: calc(var(--index)*1.75);
+    padding-bottom: var(--index);
+}
+.gallery__container{
+    position: relative;
+    height: 340px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.gallery__card__pic{
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10%;
+    border: 2px solid black;
+    transition: 0.1s ease-in-out;
+}
+.gallery__card__pic:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+.gallery_button{
+    position: relative;
+    width: 8%;
+    height: 50%;
+    background-color: rgba(1,172,84,0.3);
+    border-radius: 15px;
+    outline: none;
+    border:none;
+}
+.gallery_button:hover{
+    background-color: rgba(1,172,84,0.1);
+    cursor: pointer;
+}
+.gallery__cards{
+    width:90%;
+    justify-content: space-evenly;
+    display: flex;
+}
+.gallery_button img {
+    width: 50%;
+}
+.gallery_button_left img {
+    transform: rotateZ(180deg);
+}
+footer{
+    overflow: hidden;
+    z-index: 1;
+    display: grid;
+    position: relative;
+    height: calc(var(--index)* 15);
+    background: #00000000; 
+
+}
+#bubbles{
+    position: absolute;
+    top:0;
+    right:0;
+    left:0;
+    height: calc(var(--idnex)*10);
+    margin-top: calc(var(--idnex)*10);
+}
+.bubble{
+    z-index:0;
+    position: absolute;
+    left: var(--left);
+    border-radius: 100%;
+    -webkit-animation: bubble-size var(--time, 4s) ease-in infinite var(--delay,0s), bubble-move var(--time, 4s) ease-in infinite var(--delay,0s);
+            animation: bubble-size var(--time, 4s) ease-in infinite var(--delay,0s), bubble-move var(--time, 4s ease-in infinite var(--delay,0s));
+    transform: translate( -50%; 100:)            
+}
